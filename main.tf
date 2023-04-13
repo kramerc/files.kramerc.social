@@ -35,6 +35,15 @@ resource "aws_s3_bucket_acl" "files-kramerc-social" {
   acl    = "public-read"
 }
 
+resource "aws_s3_bucket_public_access_block" "files-kramerc-social" {
+  bucket = aws_s3_bucket.files-kramerc-social.id
+
+  block_public_acls       = true
+  ignore_public_acls      = true
+  block_public_policy     = false
+  restrict_public_buckets = false
+}
+
 resource "aws_s3_bucket_policy" "files-kramerc-social" {
   bucket = aws_s3_bucket.files-kramerc-social.id
   policy = <<POLICY
