@@ -96,7 +96,8 @@ resource "aws_iam_user" "mastodon" {
 }
 
 resource "aws_iam_access_key" "mastodon" {
-  user = aws_iam_user.mastodon.name
+  user    = aws_iam_user.mastodon.name
+  pgp_key = "mDMEYxOzPRYJKwYBBAHaRw8BAQdA3YSTxcVLmvPK5ilzJxqhOVG9sL325HAra41puCEkjsO0JEtyYW1lciBDYW1wYmVsbCA8a3JhbWVyQGtyYW1lcmMuY29tPoiZBBMWCgBBAhsDBQsJCAcCAiICBhUKCQgLAgQWAgMBAh4HAheAFiEEBt/+DhE0KHAJtqRBYa0APe9lhXIFAmMTtD4FCQPEUjEACgkQYa0APe9lhXJncAD/TyFI4kcjfiTZJWSM8vTyvFDI+aElCVUUDPabvO61EvMA/3tSgEqShy7yALoXAlDrUmo0a/NUSl3rMzLXyZzO77cAuDgEYxOzPRIKKwYBBAGXVQEFAQEHQKzMDypqygrmfPIng8MZT4TtXCathOu0E7HAiDqsQIkoAwEIB4h+BBgWCgAmAhsMFiEEBt/+DhE0KHAJtqRBYa0APe9lhXIFAmMTtD4FCQPEUjEACgkQYa0APe9lhXJcHgEAirtWpV3R7/2P02LnRHT7dfZDMTDhzYZe2kvWIxpfsWAA/1tzSev58h3NPQeCeN1JaMlk0W1Aq/hIKsh0KoHqwYwM"
 }
 
 resource "aws_iam_user_policy" "mastodon" {
