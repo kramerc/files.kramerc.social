@@ -91,6 +91,52 @@ resource "aws_s3_bucket_logging" "files-kramerc-social" {
   target_prefix = "log/"
 }
 
+resource "aws_iam_user" "mastodon" {
+  name = "mastodon"
+}
+
+resource "aws_iam_access_key" "mastodon" {
+  user = aws_iam_user.mastodon.name
+}
+
+resource "aws_iam_user_policy" "mastodon" {
+  user   = aws_iam_user.mastodon.name
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowS3Bucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketLocation",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${aws_s3_bucket.files-kramerc-social.id}"
+      ]
+    },
+    {
+      "Sid": "AllowS3Access",
+      "Effect": "Allow",
+      "Action": [
+        "s3:AbortMultipartUpload",
+        "s3:DeleteObject",
+        "s3:GetObject",        
+        "s3:GetObjectAcl",
+        "s3:ListMultipartUploadParts",
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${aws_s3_bucket.files-kramerc-social.id}/*"
+      ]
+    }
+  ]
+}
+POLICY
+}
+
 resource "aws_cloudfront_distribution" "files-kramerc-social" {
   origin {
     domain_name = aws_s3_bucket.files-kramerc-social.bucket_regional_domain_name
