@@ -22,6 +22,8 @@ locals {
   s3_origin_id = "S3-files-kramerc-social"
 }
 
+data "aws_canonical_user_id" "current" {}
+
 resource "aws_route53_zone" "files-kramerc-social" {
   name = "files.kramerc.social"
 }
@@ -32,14 +34,27 @@ resource "aws_s3_bucket" "files-kramerc-social" {
 
 resource "aws_s3_bucket_acl" "files-kramerc-social" {
   bucket = aws_s3_bucket.files-kramerc-social.id
-  acl    = "public-read"
+
+  access_control_policy {
+    grant {
+      grantee {
+        id   = data.aws_canonical_user_id.current.id
+        type = "CanonicalUser"
+      }
+      permission = "FULL_CONTROL"
+    }
+
+    owner {
+      id = data.aws_canonical_user_id.current.id
+    }
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "files-kramerc-social" {
   bucket = aws_s3_bucket.files-kramerc-social.id
 
-  block_public_acls       = true
-  ignore_public_acls      = true
+  block_public_acls       = false
+  ignore_public_acls      = false
   block_public_policy     = false
   restrict_public_buckets = false
 }
