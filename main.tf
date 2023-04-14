@@ -190,9 +190,13 @@ resource "aws_cloudfront_distribution" "files-kramerc-social" {
 resource "aws_route53_record" "files-kramerc-social" {
   zone_id = aws_route53_zone.files-kramerc-social.zone_id
   name    = "files.kramerc.social"
-  type    = "CNAME"
-  ttl     = "300"
-  records = [aws_cloudfront_distribution.files-kramerc-social.domain_name]
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.files-kramerc-social.domain_name
+    zone_id                = aws_cloudfront_distribution.files-kramerc-social.hosted_zone_id
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_acm_certificate" "files-kramerc-social-cert" {
