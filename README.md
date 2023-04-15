@@ -1,6 +1,6 @@
 # files.kramerc.social
 
-An Amazon S3 bucket and CloudFront distribution managed with Terraform, mainly used with [ShareX](https://getsharex.com/) as a destination.
+The Mastodon files bucket for [kramerc.social](https://kramerc.social), an Amazon S3 bucket and CloudFront distribution managed with Terraform.
 
 ## Set up
 
@@ -10,8 +10,9 @@ Attach the following IAM policies to your IAM user:
 - AmazonS3FullAccess
 - AWSCertificateManagerFullAccess
 - CloudFrontFullAccess
+- IAMFullAccess
 
-A [custom policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_controlling.html) can be created to further lockdown the IAM user to the specific resources and actions used by this module. 
+[Custom policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_controlling.html) can be created to further lockdown the IAM user to the specific resources and actions used by this module. 
 
 Obtain [access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for your AWS IAM user.
 ```
