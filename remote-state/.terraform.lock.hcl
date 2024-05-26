@@ -5,6 +5,7 @@ provider "registry.terraform.io/hashicorp/aws" {
   version     = "5.47.0"
   constraints = "~> 5.0"
   hashes = [
+<<<<<<< HEAD
     "h1:bZEm2TDCM7jmpNXK6QOWsT1YU8GiGGQaraUvwO887U8=",
     "zh:06037a14e47e8f82d0b3b326cd188566272b808b7970a9249a11db26d475b83d",
     "zh:116b7dd58ca964a1056249d2b6550f399b0a6bc9a7920b7ee134242114432c9f",
@@ -15,6 +16,18 @@ provider "registry.terraform.io/hashicorp/aws" {
     "zh:76d841b3f247f9bb3899dec3b4d871613a4ae8a83a581a827655d34b1bbee0ee",
     "zh:7c656ce252fafc2c915dad43a0a7da17dba975207d75841a02f3f2b92d51ec25",
     "zh:8ec97118cbdef64139c52b719e4e22443e67a1f37ea1597cd45b2e9b97332a35",
+=======
+    "h1:LeGaxHyCnTpZdrhVCSJwDx91JcPWXlf4Rt4mnlF34Gs=",
+    "h1:nBPVsjB8qc9crIly4XRLzF7aqRFHpjsip1GjN2bJHMA=",
+    "zh:0974311d5e1becfdcbdae43d022d52689fdad32a4145659e56ac534bcb8cba02",
+    "zh:100dc64a90fc0d36cf6e2882b4358fde17705edd8ab3c5f2c06d219c36b21565",
+    "zh:467a86de8a7d77cde5c3386f9e82d7f1bf5972d1b3d177e797d1d9d2e87fd357",
+    "zh:4ad1f8ef5c5522f81d271b93594a43a7666b3409ca201a1911cd950e489ef12b",
+    "zh:540a50ab7061c6df2057ec9580890a9e86a687233120af738985fa84dde2a20a",
+    "zh:6e7b73b770e92891da94751c3e0cff1e1b852f5121da8c4a689056833eeb7d94",
+    "zh:879d42721e86331b05ff77bd219ca9a062485cdb2fa803d2dcf63084f25d484c",
+    "zh:980563e615fbba127c02df6dc8872ce60f7137df45fdb8cd801cdcbae6cf192a",
+>>>>>>> 57d846f (Fix ACL on remote state bucket create)
     "zh:9b12af85486a96aedd8d7984b0ff811a4b42e3d88dad1a3fb4c0b580d04fa425",
     "zh:a369deca7938236a7da59f7ad1fe18137f736764c9015ed10e88edb6e8505980",
     "zh:a743882fb099401eae0c86d9388a6faadbbc27b2ac9477aeef643e5de4eec3f9",
